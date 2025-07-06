@@ -56,22 +56,34 @@
         </form>
     </div>
     <div class="output-container" id="output">
-    <h2>✅ Prediction Results</h2>
-    <hr>
-    {% if cluster is not none %}
-    <h2>Predicted Category: <span class="highlight">{{ category }}</span></h2>
-    <h2>Predicted Cluster: <span class="highlight">{{ cluster }}</span></h2>
-    <div class="top-words-container">
-        <h3>Top Words in Cluster: 
-            <span class="top-words">
-                {% for item in top_words %}
+        <h2>✅ Prediction Results</h2>
+        <hr>
+        {% if cluster is not none %}
+        <h2>Predicted Category: <span class="highlight">{{ category }}</span></h2>
+        <h2>Predicted Cluster: <span class="highlight">{{ cluster }}</span></h2>
+        <div class="top-words-container">
+            <h3>Top Words in Cluster:
+                <span class="top-words">
+                    {% for item in top_words %}
                     {{ item }}{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </span>
+                    {% endfor %}
+                </span>
+            </h3>
+        </div>
+        {% endif %}
+    </div>
+     {% if cluster %}
+    <div class="probability-container mt-4 p-4 rounded">
+        <h3 class="mb-4 text-center text-primary fw-bold">
+            🔍 Cluster Probability Distribution
         </h3>
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='cluster_probabilities.png') }}"
+                class="img-fluid rounded border border-2" alt="Cluster Probabilities"
+                style="max-width: 100%; height: auto;" />
+        </div>
     </div>
     {% endif %}
-</div>
 
     {% if predictions %}
     <div class="recent-predictions-container">
@@ -174,13 +186,13 @@
             <button class="accordion-header">➕ What are the practical applications of this project?</button>
             <div class="accordion-content">
                 <p>Practical applications include:
-                    <ul>
-                        <li>Organizing customer reviews or feedback</li>
-                        <li>Grouping similar articles in news platforms</li>
-                        <li>Summarizing academic papers or reports</li>
-                        <li>Enhancing recommendation systems</li>
-                        <li>Improving content discovery in educational platforms</li>
-                    </ul>
+                <ul>
+                    <li>Organizing customer reviews or feedback</li>
+                    <li>Grouping similar articles in news platforms</li>
+                    <li>Summarizing academic papers or reports</li>
+                    <li>Enhancing recommendation systems</li>
+                    <li>Improving content discovery in educational platforms</li>
+                </ul>
                 </p>
             </div>
         </div>
@@ -190,58 +202,65 @@
 
 
     <footer class="footer bg-dark text-white pt-2 pb-4 mt-4">
-  <div class="container text-center text-md-left">
-    <div class="row text-center text-md-left">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
 
-      <!-- Project Info -->
-      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 font-weight-bold text-info">Document Clustering</h5>
-        <p>
-          This project clusters documents using topic modeling and machine learning techniques. Built with Python, Flask, and KMeans, it visualizes document similarities, predicts clusters, and reveals top keywords.
-        </p>
-      </div>
+                <!-- Project Info -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Document Clustering</h5>
+                    <p>
+                        This project clusters documents using topic modeling and machine learning techniques. Built with
+                        Python, Flask, and KMeans, it visualizes document similarities, predicts clusters, and reveals
+                        top keywords.
+                    </p>
+                </div>
 
-      <!-- Quick Links -->
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 font-weight-bold text-info">Quick Links</h5>
-        <p><a href="/" class="text-white" style="text-decoration: none;">Home</a></p>
-        <p><a href="#Prediction" class="text-white" style="text-decoration: none;">Prediction</a></p>
-        <p><a href="#Dashboard" class="text-white" style="text-decoration: none;">Graphs</a></p>
-        <p><a href="#about" class="text-white" style="text-decoration: none;">FAQs</a></p>
-      </div>
+                <!-- Quick Links -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Quick Links</h5>
+                    <p><a href="/" class="text-white" style="text-decoration: none;">Home</a></p>
+                    <p><a href="#Prediction" class="text-white" style="text-decoration: none;">Prediction</a></p>
+                    <p><a href="#Dashboard" class="text-white" style="text-decoration: none;">Graphs</a></p>
+                    <p><a href="#about" class="text-white" style="text-decoration: none;">FAQs</a></p>
+                </div>
 
-      <!-- Contact -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
-        <p><i class="fas fa-home mr-3"></i> Poornima Institute of Engineering and Technology, Jaipur, India</p>
-        <p><i class="fas fa-envelope mr-3"></i> baghelsatendra27@gmail.com</p>
-        <p><i class="fas fa-phone mr-3"></i> +91-7240206069</p>
-      </div>
+                <!-- Contact -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
+                    <p><i class="fas fa-home mr-3"></i> Poornima Institute of Engineering and Technology, Jaipur, India
+                    </p>
+                    <p><i class="fas fa-envelope mr-3"></i> baghelsatendra27@gmail.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> +91-7240206069</p>
+                </div>
 
-      <!-- Social Media -->
-      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 font-weight-bold text-info">Follow Us</h5>
-        <a href="https://www.facebook.com/satendra.baghel.3152130" class="text-white me-4"><i class="fab fa-facebook fa-lg"></i></a>
-        <a href="https://www.linkedin.com/in/satendra-baghel-1a29b1256/" class="text-white me-4"><i class="fab fa-linkedin fa-lg"></i></a>
-        <a href="https://github.com/satendra27" class="text-white me-4"><i class="fab fa-github fa-lg"></i></a>
-        <a href="https://www.youtube.com/@ThinkGrow797" class="text-white me-4"><i class="fab fa-youtube fa-lg"></i></a>
-      </div>
-    </div>
+                <!-- Social Media -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-info">Follow Us</h5>
+                    <a href="https://www.facebook.com/satendra.baghel.3152130" class="text-white me-4"><i
+                            class="fab fa-facebook fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/satendra-baghel-1a29b1256/" class="text-white me-4"><i
+                            class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://github.com/satendra27" class="text-white me-4"><i
+                            class="fab fa-github fa-lg"></i></a>
+                    <a href="https://www.youtube.com/@ThinkGrow797" class="text-white me-4"><i
+                            class="fab fa-youtube fa-lg"></i></a>
+                </div>
+            </div>
 
-    <!-- Horizontal Line -->
-    <hr class="mb-4">
+            <!-- Horizontal Line -->
+            <hr class="mb-4">
 
-    <!-- Copyright -->
-    <div class="row align-items-center">
-      <div class="col-md-7 col-lg-8">
-        <p class="text-white">© 2025 <strong>Document Clustering Project</strong> | All Rights Reserved</p>
-      </div>
-      <div class="col-md-5 col-lg-4">
-        <p class="text-white text-md-end">Developed by <strong>Satendra Baghel</strong></p>
-      </div>
-    </div>
-  </div>
-</footer>
+            <!-- Copyright -->
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-white">© 2025 <strong>Document Clustering Project</strong> | All Rights Reserved</p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <p class="text-white text-md-end">Developed by <strong>Satendra Baghel</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="../static/Javascript/script.js"></script>
 </body>
