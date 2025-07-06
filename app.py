@@ -7,7 +7,6 @@ import nltk
 from nltk.corpus import stopwords
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-from flask_mail import Mail, Message
 
 nltk.download('stopwords')
 
@@ -30,28 +29,28 @@ def preprocess(text):
     text = ' '.join(word for word in text.split() if word.lower() not in frequent_words)
     return text
 
-
-cluster_to_category = {0: '🏍️rec.motorcycles',
- 1: '🌍talk.politics.mideast',
- 2: '🔐sci.crypt',
- 3: '🏥sci.med',
- 4: 'comp.sys.mac.hardware',
- 5: '🏑rec.sport.hockey',
- 6: '🛒misc.forsale',
- 7: 'comp.graphics',
- 8: '🪟comp.os.ms-windows.misc',
- 9: 'rec.motorcycles',
- 10: '💻comp.os.ms-windows.misc',
- 11: '⚾rec.sport.baseball',
- 12: 'talk.politics.mideast',
- 13: '🚗rec.autos',
- 14: '🍎comp.sys.mac.hardware',
- 15: '📈comp.graphics',
- 16: '🔫talk.politics.guns',
- 17: 'rec.sport.hockey',
- 18: '✝️soc.religion.christian',
- 19: '🚀sci.space'}
-
+cluster_to_category = {
+    0: '🏍️rec.motorcycles',
+    1: '🌍talk.politics.mideast',
+    2: '🔐sci.crypt',
+    3: '🏥sci.med',
+    4: 'comp.sys.mac.hardware',
+    5: '🏑rec.sport.hockey',
+    6: '🛒misc.forsale',
+    7: 'comp.graphics',
+    8: '🪟comp.os.ms-windows.misc',
+    9: 'rec.motorcycles',
+    10: '💻comp.os.ms-windows.misc',
+    11: '⚾rec.sport.baseball',
+    12: 'talk.politics.mideast',
+    13: '🚗rec.autos',
+    14: '🍎comp.sys.mac.hardware',
+    15: '📈comp.graphics',
+    16: '🔫talk.politics.guns',
+    17: 'rec.sport.hockey',
+    18: '✝️soc.religion.christian',
+    19: '🚀sci.space'
+}
 
 def get_top_keywords(kmeans, vectorizer, cluster_id, n_terms=10):
     centroids = kmeans.cluster_centers_
@@ -59,30 +58,23 @@ def get_top_keywords(kmeans, vectorizer, cluster_id, n_terms=10):
     top_indices = centroids[cluster_id].argsort()[::-1][:n_terms]
     return [terms[i] for i in top_indices]
 
-
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'baghelsatendra27@gmail.com'          # your Gmail
-app.config['MAIL_PASSWORD'] = 'Satya.8956'             # use App Password, not real password
-app.config['MAIL_DEFAULT_SENDER'] = 'baghelsatendra27@gmail.com'
-
-mail = Mail(app)
-
+def get_cluster_probabilities(vector, kmeans_model):
+    distances = kmeans_model.transform(vector)[0]
+    similarities = 1 / (distances + 1e-10) 
+    probabilities = similarities / similarities.sum()
+    return probabilities
 
 prediction_results = []
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     cluster = None
     category = None
     top_words = []
-    success = None
-    error = None
 
     if request.method == 'POST':
         form_type = request.form.get('form_type')
 
-        # 🟦 Prediction Form
         if form_type == 'prediction':
             uploaded_file = request.files.get('file')
             input_text = request.form.get('text')
@@ -105,39 +97,34 @@ def index():
 
                 # Wordcloud
                 words = " ".join(top_words)
-                wordcloud = WordCloud(width=1000, height=500, background_color=None,mode='RGBA', colormap='viridis').generate(words)
+                wordcloud = WordCloud(width=1000, height=500, background_color=None, mode='RGBA', colormap='viridis').generate(words)
                 plt.figure(figsize=(8, 6))
                 plt.title("Top Keywords in the Cluster")
                 plt.imshow(wordcloud, interpolation='bilinear')
                 plt.axis('off')
-                plt.savefig(r"static/top_word_wordcloud.png",transparent=True)  # Save locally in static/
+                plt.savefig("static/top_word_wordcloud.png", transparent=True)
+                plt.close()
+
+                # Cluster Probability Plot
+                probabilities = get_cluster_probabilities(vector, kmeans)
+                labels = [cluster_to_category[i] for i in range(len(probabilities))]
+                colors = ['orange' if i == cluster else 'skyblue' for i in range(len(probabilities))]
+
+                plt.figure(figsize=(12, 6))
+                plt.bar(labels, probabilities, color=colors)
+                plt.xticks(rotation=90)
+                plt.title('Cluster Probabilities')
+                plt.tight_layout()
+                plt.savefig("static/cluster_probabilities.png")
+                plt.close()
 
                 prediction_results.append((text[:100] + "...", cluster, category))
-
-        # 🟩 Contact Form
-        elif form_type == 'contact':
-            name = request.form['name']
-            sender_email = request.form['email']
-            message_body = request.form['message']
-
-            msg = Message(subject=f"New Contact Form Submission from {name}",
-                          sender=sender_email,
-                          recipients=['baghelsatendra27@gmail.com'],
-                          body=f"Name: {name}\nEmail: {sender_email}\n\nMessage:\n{message_body}")
-            try:
-                mail.send(msg)
-                success = True
-            except Exception as e:
-                print("Error sending email:", e)
-                success = False
 
     return render_template('index.html',
                            cluster=cluster,
                            category=category,
                            top_words=top_words,
-                           predictions=prediction_results,
-                           success=success,
-                           error=error)
+                           predictions=prediction_results)
 
 if __name__ == '__main__':
     app.run(debug=True)
