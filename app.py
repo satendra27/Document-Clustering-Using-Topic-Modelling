@@ -6,6 +6,8 @@ import string
 import nltk
 from nltk.corpus import stopwords
 from wordcloud import WordCloud
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 nltk.download('stopwords')
