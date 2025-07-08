@@ -51,8 +51,8 @@ An interactive web application that classifies uploaded or pasted text into topi
 ### 🏠 Home Page
 ![Home Screenshot](Project%20Snapshots/Screenshot%202025-07-07%20231822.png)
 
-### 📊 Prediction Result with Wordcloud
-![Prediction Result](Project%20Snapshots/Screenshot%202025-07-08%112900.png)
+### 📊 Prediction Result
+![Prediction Result](Project%20Snapshots/Screenshot%202025-07-08%20112900.png)
 
 ### 🔢 Cluster Probability Chart
 ![Cluster Probability](Project%20Snapshots/Screenshot%202025-07-08%20112950.png)
