@@ -52,10 +52,10 @@ An interactive web application that classifies uploaded or pasted text into topi
 ![Home Screenshot](Project%20Snapshots/Screenshot%202025-07-07%20231822.png)
 
 ### 📊 Prediction Result with Wordcloud
-![Prediction Result](static/screenshots/prediction.png)
+![Prediction Result](Project%20Snapshots/Screenshot%202025-07-08%112900.png)
 
 ### 🔢 Cluster Probability Chart
-![Cluster Probability](static/screenshots/probability_chart.png)
+![Cluster Probability](Project%20Snapshots/Screenshot%202025-07-08%20112950.png)
 
 > 📝 Make sure these images are placed in your `/static/screenshots/` folder or use relative GitHub raw URLs if hosted there.
 
@@ -63,7 +63,7 @@ An interactive web application that classifies uploaded or pasted text into topi
 
 ## 🌐 Live Demo
 
-👉 [Visit the deployed app](https://document-clustering-using-topic-modelling.onrender.com/)
+👉 [Visit the deployed app](https://document-clustering-using-topic-modelling.onrender.com)
 
 ---
 
