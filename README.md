@@ -49,7 +49,7 @@ An interactive web application that classifies uploaded or pasted text into topi
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Screenshot](C:\Users\baghe\OneDrive\Pictures\Screenshots\Screenshot 2025-07-07 231822.png)
+![Home Screenshot](Project Snapshots/Screenshot 2025-07-07 231822.png)
 
 ### 📊 Prediction Result with Wordcloud
 ![Prediction Result](static/screenshots/prediction.png)
@@ -69,7 +69,7 @@ An interactive web application that classifies uploaded or pasted text into topi
 
 ## 📦 GitHub Repository
 
-🔗 [](https://github.com/your-username/document-clustering)
+🔗 [](https://github.com/satendra27/Document-Clustering-Using-Topic-Modelling.git)
 
 ---
 
@@ -83,12 +83,4 @@ cd document-clustering
 pip install -r requirements.txt
 python app.py
 
-## Demo
-
-Insert gif or link to demo
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
