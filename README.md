@@ -49,7 +49,7 @@ An interactive web application that classifies uploaded or pasted text into topi
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Screenshot](Project Snapshots/Screenshot 2025-07-07 231822.png)
+![Home Screenshot]("Project Snapshots/Screenshot 2025-07-07 231822.png")
 
 ### 📊 Prediction Result with Wordcloud
 ![Prediction Result](static/screenshots/prediction.png)
