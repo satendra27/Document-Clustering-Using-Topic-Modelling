@@ -69,7 +69,7 @@ An interactive web application that classifies uploaded or pasted text into topi
 
 ## 📦 GitHub Repository
 
-🔗 [](https://github.com/satendra27/Document-Clustering-Using-Topic-Modelling.git)
+🔗 [(https://github.com/satendra27/Document-Clustering-Using-Topic-Modelling.git)]
 
 ---
 
