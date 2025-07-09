@@ -98,34 +98,34 @@ def index():
                 top_words = get_top_keywords(kmeans, vectorizer, cluster)
 
                 # Wordcloud
-                words = " ".join(top_words)
-                wordcloud = WordCloud(width=1000, height=500, background_color=None, mode='RGBA', colormap='viridis').generate(words)
-                plt.figure(figsize=(8, 6))
-                plt.title("Top Keywords in the Cluster")
-                plt.imshow(wordcloud, interpolation='bilinear')
-                plt.axis('off')
-                plt.savefig("static/top_word_wordcloud.png", transparent=True)
-                plt.close()
+                # words = " ".join(top_words)
+                # wordcloud = WordCloud(width=1000, height=500, background_color=None, mode='RGBA', colormap='viridis').generate(words)
+                # plt.figure(figsize=(8, 6))
+                # plt.title("Top Keywords in the Cluster")
+                # plt.imshow(wordcloud, interpolation='bilinear')
+                # plt.axis('off')
+                # plt.savefig("static/top_word_wordcloud.png", transparent=True)
+                # plt.close()
 
-                # Cluster Probability Plot
-                probabilities = get_cluster_probabilities(vector, kmeans)
-                labels = [cluster_to_category[i] for i in range(len(probabilities))]
-                colors = ['orange' if i == cluster else 'skyblue' for i in range(len(probabilities))]
+                # # Cluster Probability Plot
+                # probabilities = get_cluster_probabilities(vector, kmeans)
+                # labels = [cluster_to_category[i] for i in range(len(probabilities))]
+                # colors = ['orange' if i == cluster else 'skyblue' for i in range(len(probabilities))]
 
-                plt.figure(figsize=(12, 6))
-                plt.bar(labels, probabilities, color=colors)
-                plt.xticks(rotation=90)
-                plt.title('Cluster Probabilities')
-                plt.tight_layout()
-                plt.savefig("static/cluster_probabilities.png")
-                plt.close()
+                # plt.figure(figsize=(12, 6))
+                # plt.bar(labels, probabilities, color=colors)
+                # plt.xticks(rotation=90)
+                # plt.title('Cluster Probabilities')
+                # plt.tight_layout()
+                # plt.savefig("static/cluster_probabilities.png")
+                # plt.close()
 
                 prediction_results.append((text[:100] + "...", cluster, category))
 
     return render_template('index.html',
                            cluster=cluster,
                            category=category,
-                           top_words=top_words,
+                           # top_words=top_words,
                            predictions=prediction_results)
 
 if __name__ == '__main__':
