@@ -60,6 +60,49 @@ An interactive web application that classifies uploaded or pasted text into topi
 > 📝 Make sure these images are placed in your `/static/screenshots/` folder or use relative GitHub raw URLs if hosted there.
 
 ---
+🚀 Project Functionalities
+This web application enables users to discover the category or topic of a document using unsupervised machine learning. The main features include:
+
+🧠 1. Prediction Module
+Accepts input via text box or .txt file upload.
+
+Applies text preprocessing and TF-IDF vectorization.
+
+Uses KMeans clustering to assign the input document to a cluster.
+
+Displays the predicted topic/category using a clean UI.
+
+📊 2. Probability Distribution
+After prediction, the model computes the probability distribution across all clusters.
+
+Visualized using a bar chart, highlighting the predicted cluster.
+
+Helps users understand how confident the model is in its prediction.
+
+📂 3. Recent Predictions
+Shows a short summary (first 100 characters) of recently analyzed documents.
+
+Displays the corresponding cluster number and predicted topic for each.
+
+Allows users to track and compare previous results during the session.
+
+📈 4. Analysis Dashboard
+Generates a WordCloud of the top 10 keywords from the predicted cluster.
+
+Helps visualize the most frequent and significant terms in the topic.
+
+Enhances interpretability of the clustering results.
+
+📌 5. About Section
+Describes the purpose of the project and the technologies used.
+
+Outlines the advantages of using unsupervised topic modeling in real-world applications.
+
+📫 6. Contact Form & Footer
+Users can send feedback or inquiries directly via the Contact Us form.
+
+The footer includes useful links (GitHub repo, deployment link, credits, etc.).
+
 
 ## 🌐 Live Demo
 
