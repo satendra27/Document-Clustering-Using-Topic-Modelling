@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<!-- ################################################# Navigation Bar ######################################################## -->
     <nav class="navbar">
         <div class="nav-left">
             <img src="../static/logo-white.png" alt="">
@@ -20,6 +21,9 @@
             <li title="About"><a href="#about">ℹ️ About</a></li>
         </ul>
     </nav>
+
+<!-- ############################################### Hero Section ############################################################# -->
+
     <div class="background">
         <img src="../static/document clustering bg.png" alt="">
         <div class="gradient-overlay"></div>
@@ -32,6 +36,9 @@
             <a href="#Prediction" class="go-btn">Go to Prediction</a>
         </div>
     </div>
+
+<!-- ########################################## Prediction Input Section ##################################################### -->
+
     <div class="predict-container" id="Prediction">
         <div class="main-heading">
             <img src="../static/file-solid.svg" alt="">
@@ -46,15 +53,15 @@
                 <input type="hidden" name="form_type" value="prediction">
                 <input type="text" name="text" placeholder="Paste or type your document here..."><br>
                 <!-- <p style="display: inline; color: #e22020;">{{error}}</p> -->
-                <label for="file-upload"
-                    style="padding: 5px 10px; color: black; border-radius: 5px;border: 1px solid black; cursor: pointer; margin-top: 13px;margin-left: 450px;">
-                    Upload File
-                </label>
+               <label for="file-upload" class="file-label">Upload File</label>
                 <input type="file" id="file-upload" name="file" style="display: none;">
                 <button class="predict-btn" id="predict-btn">Predict Category</button>
             </div>
         </form>
     </div>
+
+<!-- ###################################################### Prediction Output Section ###################################### -->
+
     <div class="output-container" id="output">
         <h2>✅ Prediction Results</h2>
         <hr>
@@ -85,6 +92,8 @@
     </div>
     {% endif %}
 
+<!-- ################################################### Past Predictions #####################################################     -->
+
     {% if predictions %}
     <div class="recent-predictions-container">
 
@@ -109,6 +118,7 @@
     </div>
     {% endif %}
 
+<!-- ###################################################### Analysis Dashboard ################################################ -->
 
     <div class="analysis-container" id="Dashboard">
         <h2>📊 Cluster Analysis Dashboard</h2>
@@ -141,7 +151,7 @@
         </div>
     </div>
 
-
+<!-- ####################################################### About ########################################################### -->
 
     <div class="accordion-container" id="about">
         <h2 class="accordion-title">About</h2>
@@ -200,6 +210,7 @@
         <!-- Add more questions below using the same pattern -->
     </div>
 
+<!-- ########################################## Footer ######################################################################## -->
 
     <footer class="footer bg-dark text-white pt-2 pb-4 mt-4">
         <div class="container text-center text-md-left">
@@ -246,11 +257,7 @@
                             class="fab fa-youtube fa-lg"></i></a>
                 </div>
             </div>
-
-            <!-- Horizontal Line -->
             <hr class="mb-4">
-
-            <!-- Copyright -->
             <div class="row align-items-center">
                 <div class="col-md-7 col-lg-8">
                     <p class="text-white">© 2025 <strong>Document Clustering Project</strong> | All Rights Reserved</p>
