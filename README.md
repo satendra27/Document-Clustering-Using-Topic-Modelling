@@ -1,5 +1,5 @@
 
-# Document Clustering Using Topic Modelling
+# Document Clustering For Topic Modelling
 
 ## Objective
 
