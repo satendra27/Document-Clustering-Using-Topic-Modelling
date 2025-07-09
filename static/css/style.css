@@ -531,3 +531,75 @@ table tr td {
 .footer h5 {
   font-weight: 600;
 }
+
+
+
+
+.file-label {
+  padding: 5px 10px;
+  color: black;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-top: 13px;
+  margin-left: 450px;
+}
+
+@media screen and (max-width: 768px) {
+  .file-label {
+    margin: 10px auto !important;
+    display: block;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .predict-container {
+    width: 95% !important;
+    padding: 10px;
+  }
+
+  .main-heading {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .main-heading img {
+    width: 50px !important;
+    height: 60px !important;
+  }
+
+  .main-heading h1 {
+    margin: 10px 0 0 0 !important;
+    font-size: 22px !important;
+    text-align: center;
+  }
+
+  .predict-container p {
+    margin-left: 0 !important;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .predict-heading,
+  .input-box {
+    width: 95% !important;
+  }
+
+  .input-box input {
+    width: 95% !important;
+  }
+
+  label[for="file-upload"] {
+    margin: 10px auto !important;
+    display: block;
+    text-align: center;
+  }
+
+  .predict-btn {
+    float: none !important;
+    margin: 15px auto !important;
+    display: block;
+  }
+}
