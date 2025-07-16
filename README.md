@@ -102,12 +102,7 @@ This web application enables users to discover the category or topic of a docume
 - Users can send feedback or inquiries directly via the Contact Us form.
 
 - The footer includes useful links (GitHub repo, deployment link, credits, etc.).
-
-
-## 🌐 Live Demo
-
-👉 [Visit the deployed app](https://document-clustering-using-topic-modelling.onrender.com)
-
+  
 ---
 
 ## 📦 GitHub Repository
